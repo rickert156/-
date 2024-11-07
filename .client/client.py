@@ -5,20 +5,22 @@ def idRand():
     return _id
 
 def createConfig():
-    _id = idRand()
-    print(_id)
+    _id, role = idRand(), "0"
     with open('../README.md', 'r') as file:
         idcontrol = file.read()
-        if str(_id) not in idcontrol:print('ID уникален')
-        else:
-            print('ID уже есть')
-            createConfig()
-
-        
+        if str(_id) not in idcontrol:pass
+        else:createConfig()
+    
+    newObj = {
+            "id":_id,
+            "role":role
+            }
+    with open('config.json', 'w') as file:
+        json.dump(newObj, file)
 
 def searchJson():
     state = False
-    CONFIG = ' config.json'
+    CONFIG = 'config.json'
     for file in os.listdir():
         if CONFIG in file:stateConfig = True
         else:stateConfig = False
