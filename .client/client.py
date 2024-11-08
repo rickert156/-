@@ -1,5 +1,9 @@
 import json, os, random
 
+def writeReadme(_id, role):
+    with open('../README.md', 'a+') as file:
+        file.write(f'bot\t{_id} role\t{role}\n')
+
 def idRand():
     _id = random.randint(999, 99999)
     return _id
@@ -17,6 +21,7 @@ def createConfig():
             }
     with open('config.json', 'w') as file:
         json.dump(newObj, file)
+    writeReadme(_id, role)
 
 def searchJson():
     state = False
